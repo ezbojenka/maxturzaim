@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MaxТур-Займ: деньги за 5 минут! | Микрозаймы онлайн на карту</title>
+    <meta name="description" content="Оформите микрозайм онлайн до 30 0000 ₽ за 5 минут! Низкие ставки от 0%. Займ на карту без отказа. Лицензия ЦБ РФ.">
+    <meta name="keywords" content="микрозайм онлайн, займ на карту, быстрый займ, деньги в долг, кредит онлайн">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+        }
+        .btn-orange {
+            background-color: #f97316;
+            transition: all 0.3s ease;
+        }
+        .btn-orange:hover {
+            background-color: #ea580c;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(249, 115, 22, 0.3);
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .calculator-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+        }
+        .nav-link:hover {
+            color: #f97316;
+        }
+        .chatbot {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 100;
+        }
+        .chatbot-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #f97316;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        .chatbot-btn:hover {
+            transform: scale(1.1);
+        }
+        .chatbot-window {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 300px;
+            height: 400px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .chatbot-header {
+            background-color: #2563eb;
+            color: white;
+            padding: 10px;
+            font-weight: bold;
+        }
+        .chatbot-messages {
+            flex-grow: 1;
+            padding: 10px;
+            overflow-y: auto;
+        }
+        .chatbot-input {
+            padding: 10px;
+            border-top: 1px solid #e5e7eb;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <div class="bg-white text-blue-800 font-bold rounded-full w-10 h-10 flex items-center justify-center">
+                        MT
+                    </div>
+                    <h1 class="text-xl md:text-2xl font-bold">MaxТур-Займ</h1>
+                </div>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="#home" class="nav-link text-white hover:text-orange-400 transition">Главная</a>
+                    <a href="#about" class="nav-link text-white hover:text-orange-400 transition">О нас</a>
+                    <a href="#conditions" class="nav-link text-white hover:text-orange-400 transition">Условия</a>
+                    <a href="#faq" class="nav-link text-white hover:text-orange-400 transition">FAQ</a>
+                    <a href="#contacts" class="nav-link text-white hover:text-orange-400 transition">Контакты</a>
+                </nav>
+                <div class="flex items-center space-x-4">
+                    <a href="#login" class="text-white hover:text-orange-400 transition">
+                        <i class="fas fa-user"></i>
+                        <span class="hidden md:inline ml-1">Вход</span>
+                    </a>
+                    <button class="md:hidden text-white" id="mobile-menu-button">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div class="md:hidden hidden bg-blue-900 text-white" id="mobile-menu">
+            <div class="container mx-auto px-4 py-2 flex flex-col space-y-2">
+                <a href="#home" class="py-2 border-b border-blue-800">Главная</a>
+                <a href="#about" class="py-2 border-b border-blue-800">О нас</a>
+                <a href="#conditions" class="py-2 border-b border-blue-800">Условия</a>
+                <a href="#faq" class="py-2 border-b border-blue-800">FAQ</a>
+                <a href="#contacts" class="py-2">Контакты</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="gradient-bg text-white py-12 md:py-20">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-8 md:mb-0">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">Деньги за 5 минут!</h2>
+                <p class="text-xl mb-6">Оформите займ до 100 000  ₽ онлайн без визита в офис</p>
+                <div class="bg-white bg-opacity-10 rounded-lg p-4 mb-6">
+                    <p class="text-orange-300 font-bold mb-2">Акция: 0% на первый займ до 15 000  ₽</p>
+                    <p class="text-sm">Для новых клиентов при первом обращении</p>
+                </div>
+                <button class="btn-orange text-white font-bold py-3 px-8 rounded-full shadow-lg">
+                    Оформить займ
+                </button>
+            </div>
+            <div class="md:w-1/2 bg-white rounded-xl shadow-xl p-6">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Калькулятор займа</h3>
+                <div class="mb-4">
+                    <label class="block text-gray-700 mb-2">Сумма займа, ₽</label>
+                    <input type="range" min="5000" max="100000" step="1000" value="30000" class="w-full calculator-input" id="loanAmount">
+                    <div class="flex justify-between mt-1">
+                        <span class="text-sm text-gray-600">5 000 ₽</span>
+                        <span class="text-sm text-gray-600">100 000  ₽</span>
+                    </div>
+                    <div class="text-center mt-2">
+                        <span class="text-xl font-bold text-blue-600" id="amountValue">30 000 ₽</span>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 mb-2">Срок займа, дней</label>
+                    <input type="range" min="7" max="365" step="1" value="30" class="w-full calculator-input" id="loanTerm">
+                    <div class="flex justify-between mt-1">
+                        <span class="text-sm text-gray-600">7 дней</span>
+                        <span class="text-sm text-gray-600">365 дней</span>
+                    </div>
+                    <div class="text-center mt-2">
+                        <span class="text-xl font-bold text-blue-600" id="termValue">30 дней</span>
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-700 mb-2">Ставка, %</label>
+                    <input type="number" min="0" max="30" value="1" class="w-full calculator-input border border-gray-300 rounded px-3 py-2" id="loanRate">
+                </div>
+                <div class="bg-gray-100 rounded-lg p-4 mb-4">
+                    <div class="flex justify-between mb-2">
+                        <span class="text-gray-700">К возврату:</span>
+                        <span class="font-bold text-blue-600" id="totalAmount">30 300  ₽</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-gray-700">Переплата:</span>
+                        <span class="font-bold text-blue-600" id="overpayment">300  ₽</span>
+                    </div>
+                </div>
+                <button class="btn-orange text-white font-bold py-3 px-6 rounded-lg w-full">
+                    Получить деньги
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Почему выбирают нас</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="feature-card bg-gray-50 rounded-xl p-6 shadow-md transition duration-300">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fas fa-bolt text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-gray-800">Быстро</h3>
+                    <p class="text-gray-600">Решение за 5 минут, перевод денег на карту сразу после одобрения</p>
+                </div>
+                <div class="feature-card bg-gray-50 rounded-xl p-6 shadow-md transition duration-300">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fas fa-percent text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-gray-800">Выгодно</h3>
+                    <p class="text-gray-600">Ставки от 0% для новых клиентов, без скрытых комиссий</p>
+                </div>
+                <div class="feature-card bg-gray-50 rounded-xl p-6 shadow-md transition duration-300">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fas fa-shield-alt text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-gray-800">Надежно</h3>
+                    <p class="text-gray-600">Лицензия ЦБ РФ, защита персональных данных</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Как получить займ</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="flex flex-col items-center text-center">
+                    <div class="bg-blue-100 text-blue-600 rounded-full w-16 h-16 flex items-center justify-center mb-4 font-bold text-xl">1</div>
+                    <h3 class="font-bold mb-2">Заявка</h3>
+                    <p class="text-gray-600">Заполните онлайн-заявку за 2 минуты</p>
+                </div>
+                <div class="flex flex-col items-center text-center">
+                    <div class="bg-blue-100 text-blue-600 rounded-full w-16 h-16 flex items-center justify-center mb-4 font-bold text-xl">2</div>
+                    <h3 class="font-bold mb-2">Решение</h3>
+                    <p class="text-gray-600">Получите решение по займу за 5 минут</p>
+                </div>
+                <div class="flex flex-col items-center text-center">
+                    <div class="bg-blue-100 text-blue-600 rounded-full w-16 h-16 flex items-center justify-center mb-4 font-bold text-xl">3</div>
+                    <h3 class="font-bold mb-2">Договор</h3>
+                    <p class="text-gray-600">Подпишите договор онлайн</p>
+                </div>
+                <div class="flex flex-col items-center text-center">
+                    <div class="bg-blue-100 text-blue-600 rounded-full w-16 h-16 flex items-center justify-center mb-4 font-bold text-xl">4</div>
+                    <h3 class="font-bold mb-2">Деньги</h3>
+                    <p class="text-gray-600">Получите деньги на карту мгновенно</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Отзывы клиентов</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 rounded-xl p-6 shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold">АК</div>
+                        <div class="ml-3">
+                            <h4 class="font-bold">Алексей К.</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Взял займ впервые, всё очень быстро и понятно. Деньги пришли моментально, как и обещали. Рекомендую!"</p>
+                </div>
+                <div class="bg-gray-50 rounded-xl p-6 shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold">МС</div>
+                        <div class="ml-3">
+                            <h4 class="font-bold">Марина С.</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Понравилось, что можно взять займ под 0% как новому клиенту. Очень выручили в сложной ситуации."</p>
+                </div>
+                <div class="bg-gray-50 rounded-xl p-6 shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold">ДП</div>
+                        <div class="ml-3">
+                            <h4 class="font-bold">Дмитрий П.</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Удобный сервис, понятный интерфейс. Взял 50 000  ₽ на 3 месяца, проценты вполне адекватные."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <h2 class="text-3xl font-bold mb-6 text-gray-800">О компании MaxТур-Займ</h2>
+                    <p class="text-gray-600 mb-4">MaxТур-Займ - это современная финансовая организация, специализирующаяся на предоставлении микрозаймов физическим лицам.</p>
+                    <p class="text-gray-600 mb-4">Мы работаем на рынке с 2015 года и за это время помогли тысячам клиентов решить их финансовые вопросы.</p>
+                    <div class="bg-white p-4 rounded-lg shadow-md mb-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-certificate text-blue-600 mr-3 text-xl"></i>
+                            <div>
+                                <h3 class="font-bold">Лицензия ЦБ РФ</h3>
+                                <p class="text-sm text-gray-600">№1234567890 от 01.01.2020</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">Мы строго соблюдаем требования Федерального закона №353-ФЗ "О потребительском кредите (займе)" и гарантируем прозрачность всех условий.</p>
+                </div>
+                <div class="md:w-1/2 bg-white rounded-xl shadow-xl p-6">
+                    <h3 class="text-2xl font-bold mb-4 text-gray-800">Наши контакты</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-blue-600 mt-1 mr-3"></i>
+                            <div>
+                                <h4 class="font-bold">Адрес</h4>
+                                <p class="text-gray-600">г. Москва, ул. Тверская, д. 12, офис 34</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone-alt text-blue-600 mr-3"></i>
+                            <div>
+                                <h4 class="font-bold">Телефон</h4>
+                                <p class="text-gray-600">8 (800) 123-45-67</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope text-blue-600 mr-3"></i>
+                            <div>
+                                <h4 class="font-bold">Email</h4>
+                                <p class="text-gray-600">info@maxtur-zaim.ru</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-clock text-blue-600 mr-3"></i>
+                            <div>
+                                <h4 class="font-bold">Режим работы</h4>
+                                <p class="text-gray-600">Круглосуточно, без выходных</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <h4 class="font-bold mb-2">Мы в соцсетях</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center">
+                                <i class="fab fa-vk"></i>
+                            </a>
+                            <a href="#" class="bg-blue-400 text-white w-10 h-10 rounded-full flex items-center justify-center">
+                                <i class="fab fa-telegram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conditions Section -->
+    <section id="conditions" class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Условия получения займа</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-gray-800">Основные условия</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                            <span class="text-gray-600">Сумма займа: от 5 000 до 100 000 ₽</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                            <span class="text-gray-600">Срок займа: от 7 до 365 дней</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                            <span class="text-gray-600">Ставка: от 0% до 1% в день</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                            <span class="text-gray-600">Возраст: от 18 до 75 лет</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                            <span class="text-gray-600">Гражданство РФ</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-gray-800">Требования к заемщику</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-id-card text-blue-500 mt-1 mr-3"></i>
+                            <span class="text-gray-600">Паспорт гражданина РФ</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone text-blue-500 mt-1 mr-3"></i>
+                            <span class="text-gray-600">Действующий номер телефона</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-credit-card text-blue-500 mt-1 mr-3"></i>
+                            <span class="text-gray-600">Банковская карта любого банка РФ</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-user-tie text-blue-500 mt-1 mr-3"></i>
+                            <span class="text-gray-600">Наличие постоянного дохода</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12">
+                <h3 class="text-xl font-bold mb-4 text-gray-800">Способы погашения</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="flex flex-col items-center p-4 bg-gray-50 rounded-lg">
+                        <i class="fas fa-wallet text-3xl text-blue-600 mb-2"></i>
+                        <span class="text-center text-gray-600">Банковская карта</span>
+                    </div>
+                    <div class="flex flex-col items-center p-4 bg-gray-50 rounded-lg">
+                        <i class="fas fa-mobile-alt text-3xl text-blue-600 mb-2"></i>
+                        <span class="text-center text-gray-600">Электронные кошельки</span>
+                    </div>
+                    <div class="flex flex-col items-center p-4 bg-gray-50 rounded-lg">
+                        <i class="fas fa-building text-3xl text-blue-600 mb-2"></i>
+                        <span class="text-center text-gray-600">Банковский перевод</span>
+                    </div>
+                    <div class="flex flex-col items-center p-4 bg-gray-50 rounded-lg">
+                        <i class="fas fa-money-bill-wave text-3xl text-blue-600 mb-2"></i>
+                        <span class="text-center text-gray-600">Наличными в офисе</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Часто задаваемые вопросы</h2>
+            <div class="max-w-3xl mx-auto space-y-4">
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <button class="faq-question w-full text-left p-4 font-bold flex justify-between items-center">
+                        <span>Как быстро я получу деньги после одобрения займа?</span>
+                        <i class="fas fa-chevron-down transition-transform"></i>
+                    </button>
+                    <div class="faq-answer hidden p-4 pt-0 text-gray-600">
+                        Деньги переводятся на вашу банковскую карту мгновенно после подписания договора. В редких случаях, зависящих от банка-эмитента карты, перевод может занимать до 15 минут.
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <button class="faq-question w-full text-left p-4 font-bold flex justify-between items-center">
+                        <span>Можно ли продлить срок займа?</span>
+                        <i class="fas fa-chevron-down transition-transform"></i>
+                    </button>
+                    <div class="faq-answer hidden p-4 pt-0 text-gray-600">
+                        Да, вы можете продлить срок займа, оплатив только проценты за текущий период. Для этого необходимо подать заявку на продление в личном кабинете не позднее дня погашения.
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <button class="faq-question w-full text-left p-4 font-bold flex justify-between items-center">
+                        <span>Какие документы нужны для оформления займа?</span>
+                        <i class="fas fa-chevron-down transition-transform"></i>
+                    </button>
+                    <div class="faq-answer hidden p-4 pt-0 text-gray-600">
+                        Для оформления займа вам потребуется только паспорт гражданина РФ. Никаких дополнительных документов (справок о доходах, копий трудовой книжки и т.д.) не требуется.
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <button class="faq-question w-full text-left p-4 font-bold flex justify-between items-center">
+                        <span>Что делать, если я не могу вовремя погасить займ?</span>
+                        <i class="fas fa-chevron-down transition-transform"></i>
+                    </button>
+                    <div class="faq-answer hidden p-4 pt-0 text-gray-600">
+                        В случае возникновения трудностей с погашением, свяжитесь с нашей службой поддержки как можно раньше. Мы всегда готовы рассмотреть варианты реструктуризации долга для наших клиентов.
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <button class="faq-question w-full text-left p-4 font-bold flex justify-between items-center">
+                        <span>Как получить займ под 0%?</span>
+                        <i class="fas fa-chevron-down transition-transform"></i>
+                    </button>
+                    <div class="faq-answer hidden p-4 pt-0 text-gray-600">
+                        Акция "0% на первый займ" доступна для новых клиентов при первом обращении. Максимальная сумма займа по акции - 15 000 ₽ на срок до 30 дней. Для участия достаточно оформить заявку на сайте.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Form -->
+    <section class="py-12 gradient-bg text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-2xl mx-auto bg-white bg-opacity-10 rounded-xl p-8 backdrop-blur-sm">
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 text-center">Оформите займ прямо сейчас</h2>
+                <form id="loanForm" class="space-y-4">
+                    <div>
+                        <label class="block mb-2">ФИО</label>
+                        <input type="text" class="w-full p-3 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 focus:border-opacity-100 focus:outline-none" placeholder="Иванов Иван Иванович" required>
+                    </div>
+                    <div>
+                        <label class="block mb-2">Номер телефона</label>
+                        <input type="tel" class="w-full p-3 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 focus:border-opacity-100 focus:outline-none" placeholder="+7 (999) 123-45-67" required>
+                    </div>
+                    <div>
+                        <label class="block mb-2">Email</label>
+                        <input type="email" class="w-full p-3 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 focus:border-opacity-100 focus:outline-none" placeholder="example@mail.ru" required>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block mb-2">Сумма займа, ₽</label>
+                            <input type="number" min="5000" max="100000" step="1000" class="w-full p-3 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 focus:border-opacity-100 focus:outline-none" value="30000" required>
+                        </div>
+                        <div>
+                            <label class="block mb-2">Срок, дней</label>
+                            <input type="number" min="7" max="365" class="w-full p-3 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 focus:border-opacity-100 focus:outline-none" value="30" required>
+                        </div>
+                    </div>
+                    <div class="pt-2">
+                        <button type="submit" class="btn-orange text-white font-bold py-3 px-6 rounded-lg w-full">
+                            Отправить заявку
+                        </button>
+                    </div>
+                    <div class="text-sm text-white text-opacity-70">
+                        Нажимая кнопку, вы соглашаетесь с <a href="#" class="underline">условиями обработки персональных данных</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacts Section -->
+    <section id="contacts" class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Контакты</h2>
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <h3 class="text-xl font-bold mb-4 text-gray-800">Форма обратной связи</h3>
+                    <form class="space-y-4">
+                        <div>
+                            <label class="block text-gray-700 mb-2">Ваше имя</label>
+                            <input type="text" class="w-full p-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:outline-none" placeholder="Иван Иванов" required>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Email</label>
+                            <input type="email" class="w-full p-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:outline-none" placeholder="example@mail.ru" required>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Телефон</label>
+                            <input type="tel" class="w-full p-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:outline-none" placeholder="+7 (999) 123-45-67" required>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Сообщение</label>
+                            <textarea rows="4" class="w-full p-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:outline-none" placeholder="Ваш вопрос или сообщение"></textarea>
+                        </div>
+                        <button type="submit" class="btn-orange text-white font-bold py-3 px-6 rounded-lg">
+                            Отправить сообщение
+                        </button>
+                    </form>
+                </div>
+                <div class="md:w-1/2">
+                    <h3 class="text-xl font-bold mb-4 text-gray-800">Наш офис на карте</h3>
+                    <div class="bg-gray-200 rounded-xl overflow-hidden" style="height: 400px;">
+                        <!-- Здесь будет карта -->
+                        <div class="w-full h-full flex items-center justify-center text-gray-500">
+                            <div class="text-center">
+                                <i class="fas fa-map-marked-alt text-4xl mb-2"></i>
+                                <p>Карта офиса</p>
+                                <p class="text-sm">г. Москва, ул. Тверская, д. 12</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 grid grid-cols-2 gap-4">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-bold mb-2">Телефон</h4>
+                            <p class="text-blue-600 font-medium">8 (800) 123-45-67</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-bold mb-2">Email</h4>
+                            <p class="text-blue-600 font-medium">info@maxtur-zaim.ru</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="bg-white text-blue-800 font-bold rounded-full w-8 h-8 flex items-center justify-center">
+                            MT
+                        </div>
+                        <h3 class="text-xl font-bold">MaxТур-Займ</h3>
+                    </div>
+                    <p class="text-gray-400 mb-4">Деньги за 5 минут!</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-vk"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Компания</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#about" class="text-gray-400 hover:text-white">О нас</a></li>
+                        <li><a href="#conditions" class="text-gray-400 hover:text-white">Условия</a></li>
+                        <li><a href="#faq" class="text-gray-400 hover:text-white">FAQ</a></li>
+                        <li><a href="#contacts" class="text-gray-400 hover:text-white">Контакты</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Документы</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Лицензия ЦБ РФ</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Политика конфиденциальности</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Договор оферты</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Согласие на обработку данных</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Контакты</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-2 text-gray-400"></i>
+                            <span class="text-gray-400">г. Москва, ул. Тверская, д. 12</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-2 text-gray-400"></i>
+                            <span class="text-gray-400">8 (800) 123-45-67</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2 text-gray-400"></i>
+                            <span class="text-gray-400">info@maxtur-zaim.ru</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-sm">
+                <p>© 2023 MaxТур-Займ. Все права защищены.</p>
+                <p class="mt-2">ООО "МаксТур Финанс" зарегистрировано в реестре МФО ЦБ РФ под номером 1234567890</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot -->
+    <div class="chatbot">
+        <div class="chatbot-btn" id="chatbotBtn">
+            <i class="fas fa-comment-dots text-2xl"></i>
+        </div>
+        <div class="chatbot-window" id="chatbotWindow">
+            <div class="chatbot-header">
+                <div class="flex justify-between items-center">
+                    <span>Помощник MaxТур-Займ</span>
+                    <button id="closeChatbot" class="text-white hover:text-orange-300">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="chatbot-messages" id="chatbotMessages">
+                <div class="bg-blue-100 text-gray-800 rounded-lg p-3 mb-2 max-w-xs">
+                    Здравствуйте! Чем могу помочь?
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <div class="flex">
+                    <input type="text" placeholder="Напишите сообщение..." class="flex-grow border border-gray-300 rounded-l-lg px-3 py-2 focus:outline-none">
+                    <button class="bg-blue-600 text-white px-4 rounded-r-lg">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden" id="loginModal">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-md">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-2xl font-bold text-gray-800">Вход в личный кабинет</h3>
+                    <button id="closeLoginModal" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <form class="space-y-4">
+                    <div>
+                        <label class="block text-gray-700 mb-2">Телефон</label>
+                        <input type="tel" class="w-full p-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:outline-none" placeholder="+7 (999) 123-45-67" required>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2">Пароль</label>
+                        <input type="password" class="w-full p-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:outline-none" placeholder="Введите пароль" required>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="rounded text-blue-600">
+                            <span class="ml-2 text-gray-700">Запомнить меня</span>
+                        </label>
+                        <a href="#" class="text-blue-600 hover:underline">Забыли пароль?</a>
+                    </div>
+                    <button type="submit" class="btn-orange text-white font-bold py-3 px-6 rounded-lg w-full">
+                        Войти
+                    </button>
+                </form>
+                <div class="mt-4 text-center">
+                    <p class="text-gray-600">Еще нет аккаунта? <a href="#" class="text-blue-600 hover:underline">Зарегистрироваться</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Loan calculator
+        const loanAmount = document.getElementById('loanAmount');
+        const loanTerm = document.getElementById('loanTerm');
+        const loanRate = document.getElementById('loanRate');
+        const amountValue = document.getElementById('amountValue');
+        const termValue = document.getElementById('termValue');
+        const totalAmount = document.getElementById('totalAmount');
+        const overpayment = document.getElementById('overpayment');
+
+        function updateCalculator() {
+            const amount = parseInt(loanAmount.value);
+            const term = parseInt(loanTerm.value);
+            const rate = parseFloat(loanRate.value);
+            
+            amountValue.textContent = amount.toLocaleString('ru-RU') + ' ₽';
+            termValue.textContent = term + ' дней';
+            
+            const interest = amount * (rate / 100) * (term / 365);
+            const total = amount + interest;
+            
+            totalAmount.textContent = total.toLocaleString('ru-RU', {maximumFractionDigits: 0}) + '  ₽';
+            overpayment.textContent = interest.toLocaleString('ru-RU', {maximumFractionDigits: 0}) + '  ₽';
+        }
+
+        loanAmount.addEventListener('input', updateCalculator);
+        loanTerm.addEventListener('input', updateCalculator);
+        loanRate.addEventListener('input', updateCalculator);
+
+        // Initialize calculator
+        updateCalculator();
+
+        // FAQ accordion
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const icon = question.querySelector('i');
+                
+                answer.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+
+        // Chatbot
+        const chatbotBtn = document.getElementById('chatbotBtn');
+        const chatbotWindow = document.getElementById('chatbotWindow');
+        const closeChatbot = document.getElementById('closeChatbot');
+
+        chatbotBtn.addEventListener('click', () => {
+            chatbotWindow.style.display = 'flex';
+        });
+
+        closeChatbot.addEventListener('click', () => {
+            chatbotWindow.style.display = 'none';
+        });
+
+        // Login modal
+        const loginLinks = document.querySelectorAll('a[href="#login"]');
+        const loginModal = document.getElementById('loginModal');
+        const closeLoginModal = document.getElementById('closeLoginModal');
+
+        loginLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                loginModal.classList.remove('hidden');
+            });
+        });
+
+        closeLoginModal.addEventListener('click', () => {
+            loginModal.classList.add('hidden');
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === loginModal) {
+                loginModal.classList.add('hidden');
+            }
+        });
+
+        // Form submission
+        document.getElementById('loanForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.');
+        });
+    </script>
+</body>
+</html>
